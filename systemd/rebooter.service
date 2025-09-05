@@ -1,0 +1,6 @@
+[Unit]
+Description=Rebooter Service
+
+[Service]
+Type=oneshot
+ExecStart=systemctl reboot
