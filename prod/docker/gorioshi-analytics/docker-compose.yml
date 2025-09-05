@@ -1,0 +1,21 @@
+services:
+  gorioshi-analytics:
+    image: ghcr.io/yuukiwww/gorioshi-analytics:latest
+    networks:
+      - default
+      - traefik
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.R1.rule=Host(`yuuk1.tk`)
+      - traefik.http.routers.R1.entryPoints=websecure
+      - traefik.http.routers.R1.tls=true
+      - traefik.http.routers.R1.tls.certResolver=letsencrypt
+      - traefik.http.routers.R1.tls.domains[0].main=yuuk1.tk
+      - traefik.http.routers.R1.tls.domains[0].sans=*.yuuk1.tk
+      - traefik.http.routers.R1.service=S1
+      - traefik.http.services.S1.loadbalancer.server.port=8000
+
+networks:
+  traefik:
+    external: true
+    name: traefik

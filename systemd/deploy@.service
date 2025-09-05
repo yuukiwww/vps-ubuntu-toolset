@@ -1,0 +1,16 @@
+[Unit]
+Description=%i Service
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/root/production/docker/%i
+ExecStart=docker compose up --abort-on-container-exit
+ExecStop=docker compose down
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
