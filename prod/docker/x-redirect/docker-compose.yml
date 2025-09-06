@@ -6,7 +6,7 @@ services:
       - traefik
     labels:
       - traefik.enable=true
-      - traefik.http.routers.R7.rule=Host(`xtaiko.yuuk1.uk`) || Host(`xazi.yuuk1.uk`)
+      - traefik.http.routers.R7.rule=Host(`xtaiko.yuuk1.uk`) || Host(`xazi.yuuk1.uk`) || Host(`x.yuuk1.uk`) || Host(`xmikachi.yuuk1.uk`)
       - traefik.http.routers.R7.entryPoints=websecure
       - traefik.http.routers.R7.tls=true
       - traefik.http.routers.R7.tls.certResolver=letsencrypt
