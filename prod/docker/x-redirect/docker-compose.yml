@@ -1,6 +1,6 @@
 services:
   x-redirect:
-    image: nginx:1.26.2
+    image: nginx:1.28.0
     networks:
       - default
       - traefik
