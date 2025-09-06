@@ -6,7 +6,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./acme:/acme
-    image: traefik:v3.4.0
+    image: traefik:v3.5.1
     networks:
       - traefik
     command:
