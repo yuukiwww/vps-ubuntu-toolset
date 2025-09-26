@@ -1,4 +1,4 @@
 #!/bin/bash
 
-rsync -av prod/ /root/production/
-rsync -av --mkpath systemd/ /usr/local/lib/systemd/system/
+rsync -acv --mkpath prod/ /root/production/
+rsync -acv --mkpath systemd/ /usr/local/lib/systemd/system/
