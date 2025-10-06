@@ -1,0 +1,29 @@
+services:
+  tjaf:
+    volumes:
+      - ../taiko-web/songs:/app/songs
+    image: ghcr.io/yuukiwww/tjaf:latest
+    networks:
+      - default
+      - traefik
+      - taiko-web
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.R20.rule=Host(`tjaf.party`)
+      - traefik.http.routers.R20.entryPoints=websecure
+      - traefik.http.routers.R20.tls=true
+      - traefik.http.routers.R20.tls.certResolver=letsencrypt
+      - traefik.http.routers.R20.tls.domains[0].main=tjaf.party
+      - traefik.http.routers.R20.tls.domains[0].sans=*.tjaf.party
+      - traefik.http.routers.R20.service=S20
+      - traefik.http.services.S20.loadbalancer.server.port=8000
+    environment:
+      - MONGO_URI=mongodb://taiko-web-mongo:27017/
+
+networks:
+  traefik:
+    external: true
+    name: traefik
+  taiko-web:
+    external: true
+    name: taiko-web

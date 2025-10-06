@@ -4,8 +4,9 @@ services:
       - ./mongo:/data/db
     container_name: taiko-mongo
     image: mongo:latest
-    #networks:
-      #- default
+    networks:
+      - default
+      - taiko-web
   taiko-web-redis:
     volumes:
       - ./redis:/data
@@ -43,3 +44,6 @@ networks:
   traefik:
     external: true
     name: traefik
+  taiko-web:
+    name: taiko-web
+
