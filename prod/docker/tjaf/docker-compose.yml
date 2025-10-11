@@ -1,4 +1,8 @@
 services:
+  tjaf-redis:
+    volumes:
+      - ./redis:/data
+    image: redis:latest
   tjaf:
     volumes:
       - ../taiko-web/songs:/app/songs
@@ -19,6 +23,7 @@ services:
       - traefik.http.services.S20.loadbalancer.server.port=8000
     environment:
       - MONGO_URI=mongodb://taiko-web-mongo:27017/
+      - REDIS_URI=redis://tjaf-redis:6379/
 
 networks:
   traefik:
